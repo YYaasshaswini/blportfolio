@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balram DD — Java Backend Developer</title>
+    <script>
+      // Redirect 404s to the index.html with the path as a query parameter
+      var segmentCount = 0,
+        l = window.location;
+      if (l.pathname.split("/").length > 2) {
+        segmentCount = l.pathname.split("/").length - 2;
+      }
+      var stateObj = { prevented: true };
+      for (var i = 0; i < segmentCount; i++) {
+        stateObj["segment" + i] = l.pathname.split("/")[i + 1];
+      }
+      var destination = l.protocol + "//" + l.host + "/blportfolio/index.html";
+      history.replaceState(stateObj, "404.html", destination + "?redirect=" + l.pathname.substring(13) + l.search + l.hash);
+    </script>
+  </head>
+  <body></body>
+</html>
